@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema path="/org/gnome/shell/extensions/minimalist-system-monitor/" id="org.gnome.shell.extensions.minimalist-system-monitor">
+    <!-- See also: https://docs.gtk.org/glib/gvariant-format-strings.html -->
+    <key type="i" name="refresh-interval">
+      <default>2</default>
+      <summary>Refresh Interval In Second</summary>
+      <description>Refresh Interval In Second</description>
+    </key>
+    <key type="b" name="show-cpu">
+      <default>true</default>
+    </key>
+    <key type="b" name="show-ram">
+      <default>true</default>
+    </key>
+  </schema>
+</schemalist>

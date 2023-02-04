@@ -1,0 +1,11 @@
+{
+  "name": "Minimalist System Monitor",
+  "uuid": "minimalist-system-monitor@f.monteghetti.gmail.com",
+  "description": "Add panel button to top bar that diplays CPU and RAM usage.",
+  "version": 1,
+  "shell-version": [
+    "43"
+  ],
+  "url": "todo",
+  "settings-schema" : "org.gnome.shell.extensions.minimalist-system-monitor"
+}

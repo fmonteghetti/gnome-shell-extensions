@@ -1,0 +1,10 @@
+{
+  "name": "Version Indicator Panel Button",
+  "uuid": "version-indicator-panel-button@f.monteghetti.gmail.com",
+  "description": "Add panel button displaying version of key system software.",
+  "version": 1,
+  "shell-version": [
+    "43"
+  ],
+  "url": "todo"
+}
