@@ -6,6 +6,6 @@
   "shell-version": [
     "43"
   ],
-  "url": "todo",
+  "url": "https://github.com/fmonteghetti/gnome-shell-extensions",
   "settings-schema" : "org.gnome.shell.extensions.minimalist-system-monitor"
 }
