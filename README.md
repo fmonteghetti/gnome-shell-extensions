@@ -1,20 +1,25 @@
 Extensions for [GNOME Shell](https://gitlab.gnome.org/GNOME/gnome-shell).
 
- [![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
 # Minimalist System Monitor
 
 System monitor that displays CPU and/or RAM usage.
 
-Inspired and adapted from [ssm-gnome@lgiki.net](https://extensions.gnome.org/extension/4506/simple-system-monitor/).
+[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+
 
 ![image](img/MSMScreenshot.png)
 
 ![image](img/MSMScreenshotSettings.png)
 
+Inspired and adapted from [ssm-gnome@lgiki.net](https://extensions.gnome.org/extension/4506/simple-system-monitor/).
+
+
 # Version Indicator Panel Button
 
 Display the versions of key system software. Useful when on a rolling release.
+
+[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
 
 ![image](img/VersionIndicatorScreenshot.png)
 
@@ -24,7 +29,6 @@ Display the versions of key system software. Useful when on a rolling release.
 - When the linux entry is clicked, current kernel parameters are copied to the clipoard.
 
 **Limitation:** the versions of mesa and glibc are only displayed on distributions using `pacman`.
-
 
 Inspired and adapted from [kernel-indicator@elboulangero.gitlab.com](https://extensions.gnome.org/extension/2512/kernel-indicator/).
 
