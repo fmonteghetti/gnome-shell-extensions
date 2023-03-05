@@ -1,0 +1,9 @@
+/* Top panel clock */
+StLabel.clock {
+    color: rgba(0, 0, 0, 0); /* transparent */
+}
+
+/* Date above calendar */
+StButton.datemenu-today-button{
+    color: rgba(0, 0, 0, 0); /* transparent */
+}

@@ -33,6 +33,15 @@ Display the versions of key system software. Useful when on a rolling release.
 Inspired and adapted from [kernel-indicator@elboulangero.gitlab.com](https://extensions.gnome.org/extension/2512/kernel-indicator/).
 
 
+# Hide clock and date
+
+Hide top panel clock and calendar date by making them transparent.
+
+[![License: GPL v2](https://img.shields.io/badge/License-GPL_v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)
+
+
+![image](img/HCDScreenshot.png)
+
 # Installation
 
 For each extension, the supported versions of GNOME Shell are in `metadata.json`.
