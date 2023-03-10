@@ -19,6 +19,18 @@ function formatAsPercent(val) {
 }
 
 /**
+ * formatAsGiB:
+ * @param {float} val - value in GiB
+ * @returns {string} -  value as "XX.XG"
+ *
+ * Format memory size as a string.
+ */
+ function formatAsGiB(val) {
+    val = Math.round(val * 10) / 10;
+    return val.toFixed(1).toString() + "G";
+}
+
+/**
  * load_contents_async_promise:
  * @param {Gio.File} file - file to read
  * @returns {Promise}
@@ -41,22 +53,22 @@ function load_contents_async_promise(file) {
 
 /**
  * getCurrentMemoryUsage:
- * @returns {float} - usage value in [0,1]
+ * @returns {array[float]} [used RAM in GiB, used RAM/total RAM]
  *
  * Return memory usage obtained from /proc/meminfo.
- * Source: ssm-gnome@lgiki.net
+ * Adapted from ssm-gnome@lgiki.net
  */
 async function getCurrentMemoryUsage() {
     let currentMemoryUsage = 0;
+    let memTotal = -1;
+    let memAvailable = -1;
+    let memUsed = -1;
 
     try {
         const inputFile = Gio.File.new_for_path('/proc/meminfo');
         const content = await load_contents_async_promise(inputFile);
         const contentStr = ByteArray.toString(content);
         const contentLines = contentStr.split('\n');
-
-        let memTotal = -1;
-        let memAvailable = -1;
 
         for (let i = 0; i < contentLines.length; i++) {
             const fields = contentLines[i].trim().split(/\W+/);
@@ -82,13 +94,14 @@ async function getCurrentMemoryUsage() {
         }
 
         if (memTotal !== -1 && memAvailable !== -1) {
-            const memUsed = memTotal - memAvailable;
+            memUsed = memTotal - memAvailable;
             currentMemoryUsage = memUsed / memTotal;
         }
     } catch (e) {
         logError(e);
     }
-    return currentMemoryUsage;
+        // Convert from KiB (2^10) to GiB (2^30)
+    return [memUsed*(2**(10-30)), currentMemoryUsage];
 };
 
 
@@ -96,12 +109,13 @@ async function getCurrentMemoryUsage() {
  * getDisplayText:
  * @param {bool} showCPU - whether to display cpu usage
  * @param {bool} showRAM - whether to display ram usage
+ * @param {string} RAMfmt - ram usage display format ('GiB' or 'percent')
  * @param {CPUUsage} CPUUsage - CPU usage value in [0,1]
  * @returns {string} - text for display
  *
  * Return string ready for display.
  */
-async function getDisplayText(showCPU,showRAM,CPUUsage) {
+async function getDisplayText(showCPU,showRAM,RAMfmt,CPUUsage) {
     let displayText = ""
         // CPU usage
     if (showCPU) {
@@ -113,7 +127,12 @@ async function getDisplayText(showCPU,showRAM,CPUUsage) {
     }
         // RAM usage
     if (showRAM) {
-        displayText += "M "+formatAsPercent(await getCurrentMemoryUsage());
+        let table = await getCurrentMemoryUsage();
+        if (RAMfmt == "percent") {
+            displayText += "M "+formatAsPercent(table[1]);
+        } else if (RAMfmt == "GiB") {
+            displayText += "M "+formatAsGiB(table[0]);
+        }
     }
     return displayText;
 }

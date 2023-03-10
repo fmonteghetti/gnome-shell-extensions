@@ -35,6 +35,7 @@ class Extension {
         this._CPUUsage = new Lib.CPUUsage();
         this._button = new Ui.Button("N/A");
         this._settings = ExtensionUtils.getSettings();
+        this._RAMfmt = "percent"; // 'GiB' or 'percent' TODO: set as setting
             // display button
         Main.panel.addToStatusArea(this._uuid, this._button);
             // update button
@@ -89,6 +90,7 @@ class Extension {
         const displayText = await Lib.getDisplayText(
                                         this._settings.get_boolean('show-cpu'),
                                         this._settings.get_boolean('show-ram'),
+                                        this._RAMfmt,
                                         this._CPUUsage);
         this._button.setText(displayText);
         return GLib.SOURCE_CONTINUE;
