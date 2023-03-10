@@ -35,7 +35,7 @@ class Extension {
         this._CPUUsage = new Lib.CPUUsage();
         this._button = new Ui.Button("N/A");
         this._settings = ExtensionUtils.getSettings();
-        this._RAMfmt = "percent"; // 'GiB' or 'percent' TODO: set as setting
+        this._RAMfmt = "GiB"; // 'GiB' or 'percent' TODO: set as setting
             // display button
         Main.panel.addToStatusArea(this._uuid, this._button);
             // update button
