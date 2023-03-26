@@ -53,7 +53,9 @@ function load_contents_async_promise(file) {
 
 /**
  * getCurrentMemoryUsage:
- * @returns {array[float]} [used RAM in GiB, used RAM/total RAM]
+ * @returns {array[float]} [used RAM in GiB, 
+ *                          used RAM/total RAM, 
+ *                          total RAM in GiB]
  *
  * Return memory usage obtained from /proc/meminfo.
  * Adapted from ssm-gnome@lgiki.net
@@ -101,7 +103,7 @@ async function getCurrentMemoryUsage() {
         logError(e);
     }
         // Convert from KiB (2^10) to GiB (2^30)
-    return [memUsed*(2**(10-30)), currentMemoryUsage];
+    return [memUsed*(2**(10-30)), currentMemoryUsage, memTotal*(2**(10-30))];
 };
 
 
@@ -131,7 +133,10 @@ async function getDisplayText(showCPU,showRAM,RAMfmt,CPUUsage) {
         if (RAMfmt == "percent") {
             displayText += "M "+formatAsPercent(table[1]);
         } else if (RAMfmt == "GiB") {
-            displayText += "M "+formatAsGiB(table[0]);
+                // pad with '0' to the maximum length attainable, given by
+                // the total amount of RAM
+            displayText += "M "+formatAsGiB(table[0]).
+                            padStart(formatAsGiB(table[2]).length,'0');
         }
     }
     return displayText;
