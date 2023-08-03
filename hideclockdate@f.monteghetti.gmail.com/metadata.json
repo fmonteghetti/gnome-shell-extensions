@@ -4,7 +4,8 @@
   "description": "Hide top panel clock and calendar date by making them transparent.",
   "version": 1,
   "shell-version": [
-    "43"
+    "43",
+    "44"
   ],
   "url": "https://github.com/fmonteghetti/gnome-shell-extensions"  
 }

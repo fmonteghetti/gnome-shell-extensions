@@ -4,7 +4,8 @@
   "description": "Add panel button to top bar that diplays CPU and RAM usage.",
   "version": 1,
   "shell-version": [
-    "43"
+    "43",
+    "44"
   ],
   "url": "https://github.com/fmonteghetti/gnome-shell-extensions",
   "settings-schema" : "org.gnome.shell.extensions.minimalist-system-monitor"
